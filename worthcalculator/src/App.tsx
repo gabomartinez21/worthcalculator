@@ -2,17 +2,17 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import data from './data.json';
 import {formatCount} from './helpers';
-import { Item } from './components/Item';
+import { ItemInterface } from './helpers/interfaces';
+import { Item } from './components/Item'
 
 function App() {
-  const [saveData, setSaveData] = useState(data)
+  const [saveData, setSaveData] = useState<{ [key: string]: ItemInterface[] }>(data)
   const [totalAssets, setTotalAssets] = useState(0)
   const [totalLiabilities, setTotalLiabilities] = useState(0)
   const [currency, setCurrency] = useState('USD')
 
   useEffect(() => {
     const getAmounts = async () => {
-      console.log(saveData)
       const {data} = await axios.post('http://localhost:5000/calculate', saveData)
       setTotalAssets(data.assetsAmount)
       setTotalLiabilities(data.liabilitiesAmount)
@@ -46,17 +46,23 @@ function App() {
 
         <Item 
           currency={currency} 
-          items={data.assets}
+          items={saveData?.assets}
           total={totalAssets}
           title="Assets"
           subtitles={['Cash and Investments', 'Long Term Assets']}
+          saveData={saveData}
+          setSaveData={setSaveData}
+
         />
         <Item 
           currency={currency} 
-          items={data.liabilities}
+          items={saveData.liabilities}
           total={totalLiabilities}
           title="Liabilities"
           subtitles={['Short Term Liabilities', 'Long Term Debt']}
+          saveData={saveData}
+          setSaveData={setSaveData}
+          
         />
 
 

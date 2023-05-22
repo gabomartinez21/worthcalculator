@@ -1,7 +1,6 @@
 const { response, request } = require('express');
 
 const calculate = async (req , res = response) => {
-  console.log(req.body)
   const { assets, liabilities } = req.body;
 
   const calcAssets =  assets.reduce((acc, asset) => acc + asset.value, 0)

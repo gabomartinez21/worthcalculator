@@ -1,22 +1,35 @@
-import React, {Children} from 'react'
+import { Children, SetStateAction, ChangeEvent, Dispatch } from 'react'
 import { formatCount } from '../helpers'
-
-interface Item {
-  name: string;
-  type: string;
-  value: number;
-  monthly?: number;
-}
-
+import { ItemValue } from './ItemValue';
+import { ItemInterface   } from '../helpers/interfaces';
 interface PropItem {
   currency: string;
-  items: Item[];
+  items: ItemInterface[];
   total: number;
   title: string;
-  subtitles: string[]
+  subtitles: string[];
+  saveData: {[key: string]: ItemInterface[]};
+  setSaveData: Dispatch<SetStateAction<{[key: string]: ItemInterface[]}>>;
 }
 
-export const Item = ({currency, items, total, title, subtitles}:PropItem) => {
+export const Item = ({currency, items, total, title, subtitles, setSaveData, saveData}:PropItem) => {
+
+  const handleChange = (event:ChangeEvent<HTMLInputElement>, i:number) => {
+    const objectKey = title.toLocaleLowerCase();
+    const newData = saveData[objectKey].map((itemData: ItemInterface, index: number) => {
+      if (index === i) {
+        const newItemData = itemData;
+        newItemData.value = Number(event.target.value)
+        return newItemData;
+      }
+
+      return itemData;
+    })
+    setSaveData({
+      ...saveData, 
+      [objectKey]: newData
+    })
+  }
   return (
     <div className="assets">
       <div className="row-info">
@@ -42,7 +55,7 @@ export const Item = ({currency, items, total, title, subtitles}:PropItem) => {
               </div>
             </div>
           )}
-          {Children.toArray(items.map(item => (
+          {Children.toArray(items.map((item,i) => (
             <>
               {item.type === subtitle && (
                 <>
@@ -54,18 +67,24 @@ export const Item = ({currency, items, total, title, subtitles}:PropItem) => {
                     <div className="col">
                       <p>{formatCount(item.monthly, currency)}</p>
                     </div>
-                    <div className="col">
-                      <p>{formatCount(item.value, currency)}</p>
-                    </div>
+                    <ItemValue
+                      index={i}
+                      currency={currency}
+                      value={item.value}
+                      handleChange={handleChange}
+                    />
                   </div>
                 ): (
                   <div className="row-info">
                     <div className="col">
                       <p>{item.name}</p>
                     </div>
-                    <div className="col">
-                      <p>{formatCount(item.value, currency)}</p>
-                    </div>
+                    <ItemValue
+                      index={i}
+                      currency={currency}
+                      value={item.value}
+                      handleChange={handleChange}
+                    />
                   </div>
                 )}
                 </>
