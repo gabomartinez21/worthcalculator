@@ -1,0 +1,112 @@
+{
+  "assets": [
+    {
+      "name": "Chequing",
+      "value": 2000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Savings for Taxes",
+      "value": 4000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Rainy Day Fund",
+      "value": 506,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Savings for Fun",
+      "value": 5000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Savings for Travel",
+      "value": 400,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Savings for Personal Development",
+      "value": 200,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Investment 1",
+      "value": 5000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Investment 2",
+      "value": 60000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Investment 3",
+      "value": 30000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Investment 4",
+      "value": 50000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Investment 5",
+      "value": 24000,
+      "type": "Cash and Investments"
+    },
+    {
+      "name": "Primary Home",
+      "value": 455000,
+      "type": "Long Term Assets"
+    },
+    {
+      "name": "Second Home",
+      "value": 1564321,
+      "type": "Long Term Assets"
+    },
+    {
+      "name": "Other",
+      "value": 0,
+      "type": "Long Term Assets"
+    }
+  ],
+  "liabilities": [
+    {
+      "name": "Credit Card 1",
+      "monthly": 200,
+      "value": 4342,
+      "type": "Short Term Liabilities"
+    },
+    {
+      "name": "Credit Card 2",
+      "monthly": 150,
+      "value": 322,
+      "type": "Short Term Liabilities"
+    },
+    {
+      "name": "Mortgage 1",
+      "monthly": 2000,
+      "value": 250999,
+      "type": "Long Term Debt"
+    },
+    {
+      "name": "Mortgage 2",
+      "monthly": 3500,
+      "value": 632634,
+      "type": "Long Term Debt"
+    },
+    {
+      "name": "Line of Credit",
+      "monthly": 500,
+      "value": 10000,
+      "type": "Long Term Debt"
+    },
+    {
+      "name": "Investment Loan",
+      "monthly": 700,
+      "value": 10000,
+      "type": "Long Term Debt"
+    }
+  ]
+}
